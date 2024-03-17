@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 // App
 import App from "./app/App.tsx";
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 Axios(axios);
 Chart.register(...registerables);
