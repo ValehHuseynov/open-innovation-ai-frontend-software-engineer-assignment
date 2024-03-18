@@ -1,4 +1,5 @@
 export const defaultOptions = {
+  indexAxis: "x",
   responsive: true,
   plugins: {
     legend: {

@@ -10,12 +10,14 @@ const API_KEY = enviroment.API_KEY;
 
 router.get("/observations", async (req, res) => {
   const series_id = req.query.series_id;
-  const sort_order = req.query.sort_order;
+  const sort_order = req.query.sort_order || "asc";
 
   if (!series_id) return res.status(500).json("Series ID is required!");
+
   const URL = `${API_URL}/series/observations?series_id=${series_id}&api_key=${API_KEY}${
     sort_order ? `&sort_order=${sort_order}` : ""
   }&file_type=json`;
+
   try {
     const data = await axios(URL).then((response) => response.data);
     res.status(200).json({ data });

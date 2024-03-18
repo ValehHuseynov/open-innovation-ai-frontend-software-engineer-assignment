@@ -1,22 +1,25 @@
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 import { Line, Bar } from "react-chartjs-2";
 import { Observation } from "../../core/_models";
-import { ChartProps } from "./core/_models";
 import {
   useQueryResponseData,
   useQueryResponseLoading,
 } from "../../core/QueryResponseProvider";
 import { defaultOptions } from "./core/_helpers";
+import { useChartConfig } from "./core/ChartConfigProvider";
 
-const Chart: FC<ChartProps> = ({ chartConfig }) => {
+const Chart = () => {
   const {
-    chartType,
-    title,
-    backgroundColor,
-    pointStyle,
-    stepped,
-    borderRadius,
-  } = chartConfig;
+    state: {
+      chartType,
+      title,
+      backgroundColor,
+      pointStyle,
+      stepped,
+      borderRadius,
+    },
+  } = useChartConfig();
+
   const response = useQueryResponseData();
   const isLoading = useQueryResponseLoading();
 
